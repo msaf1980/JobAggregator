@@ -1,0 +1,46 @@
+.blue {
+    color:blue;
+} 
+
+.h4 {
+	color:red;
+}
+
+.error {
+	color:red;
+}
+
+.hr {
+    border-collapse:collapse;
+    border-spacing:1;
+    border-color:#ccc;
+}
+
+table { 
+    border-style: none;
+}
+
+td { 
+    padding: 5px;
+    border-style: none;
+}
+
+.solid {
+    text-decoration-style:solid;
+}
+
+.table1b { 
+    border: 4px solid black; /* Рамка вокруг таблицы */
+    border-collapse: collapse; /* Отображать только одинарные линии */
+}
+.th1b { 
+    text-align: left; /* Выравнивание по левому краю */
+    background: #ccc; /* Цвет фона ячеек */
+    padding: 5px; /* Поля вокруг содержимого ячеек */
+    border: 1px solid black; /* Граница вокруг ячеек */
+}
+
+.td1b { 
+    padding: 5px; /* Поля вокруг содержимого ячеек */
+    border: 1px solid black; /* Граница вокруг ячеек */
+}

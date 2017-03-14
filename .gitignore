@@ -1,0 +1,5 @@
+/target/
+/data/
+src/main/sql/vpproject/*.*[0-9]
+src/main/sql/vpproject/*.vux
+/*.log
