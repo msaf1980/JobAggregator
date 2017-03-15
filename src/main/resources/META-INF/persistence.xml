@@ -5,6 +5,10 @@
     <!-- non-jta-data-source>TEST</non-jta-data-source -->
     <properties>
 	
+	    <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+		<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+        <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://192.168.0.128:5432/test" />
+		
         <property name="javax.persistence.jdbc.user" value="test" />
         <property name="javax.persistence.jdbc.password" value="123456qw" />
 
