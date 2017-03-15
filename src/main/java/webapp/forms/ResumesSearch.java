@@ -5,6 +5,7 @@
  */
 package webapp.forms;
 
+import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.logging.Level;
@@ -14,7 +15,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @ToString
-public class ResumesSearch {
+public class ResumesSearch implements Serializable {
     @Getter @Setter
     private String location;
     
