@@ -78,7 +78,6 @@ CREATE TABLE workingtype (
 	
 CREATE UNIQUE INDEX workingtype_id 
   ON workingtype (id);
-!!!!  
 CREATE INDEX workingtype_title 
   ON workingtype (title);
 	
