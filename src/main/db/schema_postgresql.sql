@@ -122,7 +122,7 @@ CREATE TABLE job_specialty (
   id    int NOT NULL, 
   jobrubric_id int4,
   title varchar(255) NOT NULL, 
-  CONSTRAINT pk_job_speciality 
+  CONSTRAINT pk_job_specialty 
     PRIMARY KEY (id));
 	
 CREATE UNIQUE INDEX job_specialty_id 
@@ -130,7 +130,7 @@ CREATE UNIQUE INDEX job_specialty_id
 CREATE INDEX job_specialty_title 
   ON job_specialty (title);
 
-ALTER TABLE job_speciality ADD CONSTRAINT fk_job_rubric_specialty FOREIGN KEY (jobrubricid) REFERENCES job_rubric (id);
+ALTER TABLE job_specialty ADD CONSTRAINT fk_job_rubric_specialty FOREIGN KEY (jobrubric_id) REFERENCES job_rubric (id);
   
 ALTER TABLE public.job_specialty
   OWNER TO test;
@@ -150,9 +150,9 @@ CREATE TABLE resume (
   personal_qualities varchar(16000), 
   skills             varchar(16000), 
   marital_status     varchar(20), 
-  birthday           timestamp(7), 
-  add_day            timestamp(7), 
-  mod_day            timestamp(7), 
+  birthday           timestamp(6), 
+  add_day            timestamp(6), 
+  mod_day            timestamp(6), 
   workingtype_id      int, 
   schedule_id         int, 
   experience_id       int, 
@@ -180,13 +180,15 @@ ALTER TABLE resume ADD CONSTRAINT fk_resume_currency FOREIGN KEY (currency_id) R
 ALTER TABLE public.resume
   OWNER TO test;
 
+  
+  
 CREATE TABLE cities_reference (
   resume_id       bigint NOT NULL, 
   city_id         int NOT NULL, 
   citydistinct_id int NOT NULL);
   
-CREATE INDEX cities_reference_resumeid 
-  ON cities_reference (resumeid);
+CREATE INDEX cities_reference_resume_id 
+  ON cities_reference (resume_id);
 
 ALTER TABLE cities_reference ADD CONSTRAINT fk_city_reference_city FOREIGN KEY (city_id) REFERENCES city (id);  
 ALTER TABLE cities_reference ADD CONSTRAINT fk_city_distinct FOREIGN KEY (citydistinct_id) REFERENCES city_distinct (id);
@@ -203,16 +205,16 @@ CREATE TABLE resume_rubrics (
   jobrubric_id     int NOT NULL, 
   jobspecialty_id int NOT NULL);
   
-CREATE INDEX resume_rubrics_resumeid 
+CREATE INDEX resume_rubrics_resume_id 
   ON resume_rubrics (resume_id);
-CREATE INDEX resume_rubrics_jobrubricid 
+CREATE INDEX resume_rubrics_jobrubric_id 
   ON resume_rubrics (jobrubric_id);
-CREATE INDEX resume_rubrics_jobspecialityid 
-  ON resume_rubrics (jobspeciality_id);
+CREATE INDEX resume_rubrics_jobspecialtyid 
+  ON resume_rubrics (jobspecialty_id);
 
 ALTER TABLE resume_rubrics ADD CONSTRAINT fk_resume_rubrics FOREIGN KEY (resume_id) REFERENCES resume (id);
 ALTER TABLE resume_rubrics ADD CONSTRAINT fk_resume_jobrubric FOREIGN KEY (jobrubric_id) REFERENCES job_rubric (id);
-ALTER TABLE resume_rubrics ADD CONSTRAINT fk_resume_jobspecialty FOREIGN KEY (jobspeciality_id) REFERENCES job_speciality (id);
+ALTER TABLE resume_rubrics ADD CONSTRAINT fk_resume_jobspecialty FOREIGN KEY (jobspecialty_id) REFERENCES job_specialty (id);
 
 ALTER TABLE public.resume_rubrics
   OWNER TO test;
@@ -227,12 +229,12 @@ CREATE TABLE institution (
   specialty     varchar(4000) NOT NULL, 
   city_id        int, 
   description   varchar(4000), 
-  from_day      timestamp(7), 
-  to_day        timestamp(7), 
+  from_day      timestamp(6), 
+  to_day        timestamp(6), 
   additional    bool);
   
-CREATE INDEX institutions_resumeid 
-  ON institutions (resume_id);
+CREATE INDEX institutions_resume_id 
+  ON institution (resume_id);
 
 ALTER TABLE institution ADD CONSTRAINT fk_institution_city FOREIGN KEY (city_id) REFERENCES city (id);
 ALTER TABLE institution ADD CONSTRAINT fk_intitution_resume FOREIGN KEY (resume_id) REFERENCES resume (id);
@@ -244,13 +246,13 @@ CREATE TABLE resume_jobs (
   resume_id    bigint NOT NULL, 
   position    varchar(2000) NOT NULL, 
   company     varchar(2000) NOT NULL, 
-  from_day   timestamp(7) NOT NULL, 
-  to_day     timestamp(7), 
+  from_day   timestamp(6) NOT NULL, 
+  to_day     timestamp(6), 
   city_id      int, 
   description varchar(8000));
   
-CREATE INDEX resume_jobs_resumeid 
-  ON resume_jobs (resumeid);
+CREATE INDEX resume_jobs_resume_id 
+  ON resume_jobs (resume_id);
 
 ALTER TABLE resume_jobs ADD CONSTRAINT fk_resume_jobs FOREIGN KEY (resume_id) REFERENCES resume (id);
 ALTER TABLE resume_jobs ADD CONSTRAINT fk_resume_jobs_city FOREIGN KEY (city_id) REFERENCES city (id);
