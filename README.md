@@ -5,3 +5,5 @@
 Работа протестированна на:
 1) Glasshfish 4.1.1 (требуется обновить встроенный пакет jboss-logging до версии 3.3.0 простой заменой JAR-пакета). Ветка glassfish-postgresql
 2) Apache Tomcat 8.0.27. Ветка tomcat-postgresql
+
+Для работы потребуется обновить БД
