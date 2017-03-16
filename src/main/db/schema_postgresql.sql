@@ -188,9 +188,9 @@ CREATE TABLE cities_reference (
 CREATE INDEX cities_reference_resumeid 
   ON cities_reference (resumeid);
 
-ALTER TABLE cities_reference ADD CONSTRAINT fk_city_reference_city FOREIGN KEY (cityid) REFERENCES city (id);  
-ALTER TABLE cities_reference ADD CONSTRAINT fk_city_distinct FOREIGN KEY (citydistinctid) REFERENCES city_distinct (id);
-ALTER TABLE cities_reference ADD CONSTRAINT fk_resume_cities_ref FOREIGN KEY (resumeid) REFERENCES resume (id);
+ALTER TABLE cities_reference ADD CONSTRAINT fk_city_reference_city FOREIGN KEY (city_id) REFERENCES city (id);  
+ALTER TABLE cities_reference ADD CONSTRAINT fk_city_distinct FOREIGN KEY (citydistinct_id) REFERENCES city_distinct (id);
+ALTER TABLE cities_reference ADD CONSTRAINT fk_resume_cities_ref FOREIGN KEY (resume_id) REFERENCES resume (id);
 
   
 ALTER TABLE public.cities_reference
