@@ -1,5 +1,5 @@
 CREATE TABLE city (
-  id    SERIAL NOT NULL, 
+  id    int NOT NULL, 
   title varchar(255) NOT NULL, 
   CONSTRAINT pk_city 
     PRIMARY KEY (id));
@@ -15,7 +15,7 @@ ALTER TABLE public.city
 
 
 CREATE TABLE city_distinct (
-  id    SERIAL NOT NULL, 
+  id    int NOT NULL, 
   title varchar(255), 
   CONSTRAINT pk_city_distinct 
     PRIMARY KEY (id));
@@ -29,9 +29,8 @@ ALTER TABLE public.city_distinct
   OWNER TO test;
 
   
-  
 CREATE TABLE education (
-  id    SERIAL NOT NULL, 
+  id    int NOT NULL, 
   title varchar(255) NOT NULL, 
   CONSTRAINT pk_education 
     PRIMARY KEY (id));
@@ -47,7 +46,7 @@ ALTER TABLE public.education
   
   
 CREATE TABLE experience (
-  id    SERIAL NOT NULL, 
+  id    int NOT NULL, 
   title varchar(255) NOT NULL, 
   CONSTRAINT pk_experience 
     PRIMARY KEY (id));
@@ -72,7 +71,7 @@ ALTER TABLE public.currency
 	
 	
 CREATE TABLE workingtype (
-  id    SERIAL NOT NULL, 
+  id    int NOT NULL, 
   title varchar(255) NOT NULL, 
   CONSTRAINT pk_working_type 
     PRIMARY KEY (id));
@@ -89,7 +88,7 @@ ALTER TABLE public.workingtype
   
 
 CREATE TABLE schedule (
-  id    SERIAL NOT NULL, 
+  id    int NOT NULL, 
   title varchar(255) NOT NULL, 
   CONSTRAINT pk_schedule 
     PRIMARY KEY (id));
@@ -105,7 +104,7 @@ ALTER TABLE public.schedule
   
 
 CREATE TABLE job_rubric (
-  id    SERIAL NOT NULL, 
+  id    int NOT NULL, 
   title varchar(255), 
   CONSTRAINT pk_job_rubric 
     PRIMARY KEY (id));
@@ -121,7 +120,7 @@ ALTER TABLE public.job_rubric
   
   
 CREATE TABLE job_specialty (
-  id    SERIAL NOT NULL, 
+  id    int NOT NULL, 
   jobrubric_id int4,
   title varchar(255) NOT NULL, 
   CONSTRAINT pk_job_speciality 
@@ -140,7 +139,7 @@ ALTER TABLE public.job_specialty
   
   
 CREATE TABLE resume (
-  id                 BIGSERIAL NOT NULL, 
+  id                 bigint NOT NULL, 
   owner_id		     bigint NOT NULL, 
   name               varchar(255) NOT NULL, 
   wanted_salary      bigint, 
