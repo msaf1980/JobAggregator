@@ -199,37 +199,17 @@ public class DefaultController {
             tx = entityManager.getTransaction();
             tx.begin();
             
-            //lock(entityManager);
+            lock(entityManager);
             while ((resumes = we.getResumes(debug)) != null) {
                 int size = resumes.getResumes().size();
                 if (size > 0) {
                     count += size;
                     
-                    // for fix errors like
-                    //javax.persistence.EntityNotFoundException: Unable to find webapp.model.JobSpecialty with id 494
-                    /*
-                    for (int i = 0; i < size; i++) {
-                        Resume resume_new = resumes.getResumes().get(i);
-                        if (resumeIds.contains(resume_new.getId()))
-                           continue; 
-                        ResumeDAO.mergeFKAll(entityManager, resume_new);
-                    }
-                    entityManager.flush();
-                    tx.commit();
-                    
-                    tx.begin();
-                    */
                     for (int i = 0; i < size; i++) {
                         Resume resume_new = resumes.getResumes().get(i);
                         
                         if (resumeIds.contains(resume_new.getId()))
                            continue; 
-                        
-                        /*
-                        int k = 0;
-                        if (resume_new.getWanted_salary() != null && resume_new.getWanted_salary().compareTo(new Long(3000)) <= 0)
-                            k++;
-                        */
                         
                         resumeIds.add(resume_new.getId());
                         
@@ -239,7 +219,6 @@ public class DefaultController {
                         if (n >= batch) {
                             n = 0;
                             entityManager.flush();
-                            //ResumeDAO.clear();
                             entityManager.clear();
                         }
                     }
