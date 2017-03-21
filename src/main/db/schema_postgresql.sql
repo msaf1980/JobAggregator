@@ -249,7 +249,7 @@ CREATE TABLE resume_jobs (
   from_day   timestamp(6) NOT NULL, 
   to_day     timestamp(6), 
   city_id      int, 
-  description varchar(8000));
+  description varchar(14000));
   
 CREATE INDEX resume_jobs_resume_id 
   ON resume_jobs (resume_id);
