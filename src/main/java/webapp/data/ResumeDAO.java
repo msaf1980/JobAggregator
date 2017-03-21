@@ -58,6 +58,9 @@ public class ResumeDAO {
     public static Resume merge(EntityManager entityManager, Resume resume, boolean withFK) {
         Resume resume_merged = entityManager.merge(resume);
         
+        if (withFK) 
+            mergeFK(entityManager, resume);
+            
         initLazyCollections(entityManager, resume_merged);
         
         CitiesReferenceDAO.merge(entityManager, resume_merged, resume.getCitiesreferenceList(), withFK);
