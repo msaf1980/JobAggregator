@@ -4,13 +4,12 @@
 
     <groupId>webapp</groupId>
     <artifactId>JobAggregator</artifactId>
+    <!--name>JobAggregator</name-->
+    <packaging>war</packaging>        
     <version>1.0.0-SNAPSHOT</version>
-    <packaging>war</packaging>
-
-    <name>JobAggregator</name>
-
+                
     <properties>
-        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+        <!--endorsed.dir>${project.build.directory}/endorsed</endorsed.dir-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <javaee.version>7.0</javaee.version>
         <jta.version>1.1</jta.version>
@@ -68,11 +67,6 @@
             <version>${spring.version}</version>
         </dependency>  
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
             <version>${jackson.version}</version>
@@ -87,9 +81,14 @@
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
-        
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
     </dependencies>
 
+    
     <build>
         <plugins>
             <plugin>
@@ -100,7 +99,7 @@
                     <source>1.8</source>
                     <target>1.8</target>
                     <compilerArguments>
-                        <endorseddirs>${endorsed.dir}</endorseddirs>
+                        <!--endorseddirs>${endorsed.dir}</endorseddirs-->
                     </compilerArguments>
                 </configuration>
             </plugin>
@@ -123,7 +122,7 @@
                             <goal>copy</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${endorsed.dir}</outputDirectory>
+                            <!--outputDirectory>${endorsed.dir}</outputDirectory-->
                             <silent>true</silent>
                             <artifactItems>
                                 <artifactItem>
@@ -139,5 +138,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
